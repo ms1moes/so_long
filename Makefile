@@ -1,48 +1,48 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/04 15:23:11 by msimoes-          #+#    #+#              #
-#    Updated: 2022/10/04 19:14:55 by msimoes-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS		=	$(SRCS_DIR)/main.c\
+				$(SRCS_DIR)/get_next_line.c\
+				$(SRCS_DIR)/get_next_line_utils.c\
 
-NAME = so_long
+SRCS_DIR	= srcs
 
-SRCS =	get_next_line_bonus.c\
-		get_next_line_utils_bonus.c\
-		main.c\
+OBJS		= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
-OBJS = $(SRCS:.c=.o)
+OBJS_DIR	= objs
 
-CC = gcc
+MLX			= mlx_linux/libmlx_Linux.a
 
-CFLAGS = -Wall -Wextra -Werror -I #-fsanitize=address
+PRINTF		= printf/libftprintf.a
 
-MLX_LIB_DIR = mlx_linux/
-MLX_INCLUDE = -Imlx_linux
-MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+LIBFT		= libft/libft.a
 
-# ^ primeira dependencia
-# @ nome da regra
-all: $(NAME) 
+CC			= gcc
+CFLAGS		= -g -Wall -Wextra -Werror #-g -fsanitize=address
+RM			= rm -fr
+NAME		= so_long
 
-$(NAME): $(OBJS)
-		@$(CC) $(^) $(MLX_FLAGS) -o $(@)
+all: $(NAME)
 
-%.o: %.c
-	@$(CC) $(INCLUDES) $(MLX_INCLUDE) -c $(^) -o $(@)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	mkdir -p $(OBJS_DIR)
+	$(CC) $(CFLAGS) -I/usr/headers -Imlx_linux -O3 -c $< -o $@
+
+$(NAME):	$(LIBFT) $(PRINTF) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lprintf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(MLX):
 	make -C mlx_linux
-	
+
+$(PRINTF):
+	make -C printf
+
+$(LIBFT):
+	make -C libft
+
 clean:
-	rm -rf $(OBJS)
+			$(RM)	$(OBJS)
+			make clean -C  mlx_linux
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:	clean
+			$(RM)	$(NAME) $(OBJS_DIR)
+re:	fclean all
 
-re: fclean all
+.PHONY: fclean all re clean

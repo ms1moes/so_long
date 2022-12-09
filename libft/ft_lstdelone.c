@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: msimoes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 17:19:17 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/12/09 16:32:12 by msimoes-         ###   ########.fr       */
+/*   Created: 2022/03/02 19:07:23 by msimoes-          #+#    #+#             */
+/*   Updated: 2022/03/02 19:07:28 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "../mlx_linux/mlx.h"
-# include "../libft/libft.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
-# include <fcntl.h>
-# include <stdlib.h>
-
-
-#endif
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
+}

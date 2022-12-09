@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:35:57 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/10/04 18:49:04 by msimoes-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:20:25 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/so_long.h"
+#include "../headers/so_long.h"
 
 char	*get_next_line(int fd)
 {
-	static char	file[FOPEN_MAX][BUFFER_SIZE + 1];
+	static char	file[BUFFER_SIZE + 1];
 	char		*line;
 	int			digit;
 
@@ -24,11 +24,11 @@ char	*get_next_line(int fd)
 	digit = 1;
 	while (1)
 	{
-		if (!file[fd][0])
-			digit = read(fd, file[fd], BUFFER_SIZE);
+		if (!file[0])
+			digit = read(fd, file, BUFFER_SIZE);
 		if (digit > 0)
-			line = ft_strjoin_gnl(line, file[fd]);
-		if (ft_update_file(file[fd]) || digit < 1)
+			line = ft_strjoin_gnl(line, file);
+		if (ft_update_file(file) || digit < 1)
 			break ;
 	}
 	return (line);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:31:36 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/10/04 17:45:54 by msimoes-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:20:29 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/get_next_line_bonus.h"
+#include "../headers/get_next_line.h"
 
 size_t	ft_strlen_gnl(char *str)
 {

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: msimoes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 15:23:16 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/10/04 19:15:30 by msimoes-         ###   ########.fr       */
+/*   Created: 2022/03/02 19:09:18 by msimoes-          #+#    #+#             */
+/*   Updated: 2022/03/02 19:11:18 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "libft.h"
 
-int main(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	void	*mlx_ptr;
+	t_list	*tmp;
 
-	mlx_ptr = mlx_init();
-	mlx_new_window(mlx_ptr, 800, 600, "so_long");	
-	
-	mlx_loop(mlx_ptr);
+	if (!*lst)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+	lst = NULL;
 }
-

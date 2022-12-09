@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: msimoes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 17:19:17 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/12/09 16:32:12 by msimoes-         ###   ########.fr       */
+/*   Created: 2022/03/02 19:18:06 by msimoes-          #+#    #+#             */
+/*   Updated: 2022/03/02 19:18:25 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "../mlx_linux/mlx.h"
-# include "../libft/libft.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
-# include <fcntl.h>
-# include <stdlib.h>
-
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
