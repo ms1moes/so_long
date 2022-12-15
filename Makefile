@@ -1,6 +1,10 @@
-SRCS		=	$(SRCS_DIR)/main.c\
-				$(SRCS_DIR)/get_next_line.c\
+SRCS		=	$(SRCS_DIR)/get_next_line.c\
 				$(SRCS_DIR)/get_next_line_utils.c\
+				$(SRCS_DIR)/map_size.c\
+				$(SRCS_DIR)/map_utils.c\
+				$(SRCS_DIR)/checkers.c\
+				$(SRCS_DIR)/main.c\
+
 
 SRCS_DIR	= srcs
 
@@ -15,7 +19,7 @@ PRINTF		= printf/libftprintf.a
 LIBFT		= libft/libft.a
 
 CC			= gcc
-CFLAGS		= -g -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror -fsanitize=address
 RM			= rm -fr
 NAME		= so_long
 

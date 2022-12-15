@@ -2,11 +2,9 @@
 
 int check_ber(char *str)
 {
-    int i;
     char *c;
 
-    i = 0;
-    c = ft_strrch(str, '.');
+    c = ft_strrchr(str, '.');
     if(!c)
         return (1);
     if(ft_strncmp(c, ".ber", 5))
@@ -14,33 +12,25 @@ int check_ber(char *str)
     return (0);
 }
 
-int check_map_closed(t_map *map)
+int	check_map_closed(int i)
 {
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-    map->map_height = height(map->map);
-    map->map_width = length(map->map);
-    while (i < map->map_height)
-    {
-        while (j < map->map_width)
-        {
-            if (i == 0 || i == map->map_height - 1)
-                if (map->map[i][j] != '1')
-                    return (1);
-            else
-                if (map->map[i][0] != '1' || map->map[i][map->map_width - 1] != '1')
-                    return (1);
-            j++;
-        }
-        j = 0;
-        i++;
-    }
-    return (0);
+    map()->map_width = length(map()->map);
+    map()->map_height = height(map()->map);
+	while (i < map()->map_width)
+	{
+		if (map()->map[0][i] != '1' || map()->map[map()->map_height - 1][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 1;
+	while (i < map()->map_height - 1)
+	{
+		if (map()->map[i][0] != '1' || map()->map[i][map()->map_width - 1] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
 }
-
 int check_map_chars(t_map *map)
 {
     int i;
