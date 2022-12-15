@@ -15,7 +15,7 @@ PRINTF		= printf/libftprintf.a
 LIBFT		= libft/libft.a
 
 CC			= gcc
-CFLAGS		= -g -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror -fsanitize=address
 RM			= rm -fr
 NAME		= so_long
 
