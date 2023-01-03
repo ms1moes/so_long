@@ -6,7 +6,7 @@
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:23:16 by msimoes-          #+#    #+#             */
-/*   Updated: 2023/01/03 17:35:20 by msimoes-         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:15:10 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_game   *game(void)
 
 int	main(int ac, char **av)
 {   
-    static t_game  game;
     int fd;
 
     if (ac != 2)
@@ -51,10 +50,10 @@ int	main(int ac, char **av)
         return 0;
     checks();
     close(fd);
-    game.mlx = mlx_init();
+    game()->mlx = mlx_init();
+    game()->win = mlx_new_window(game()->mlx, length(map()->map) * 64, height(map()->map) * 64, "so_long");
     render_img();
-    game.win = mlx_new_window(game.mlx, length(map()->map) * 64, height(map()->map) * 64, "so_long");
-    mlx_loop(game.mlx);  
+    mlx_loop(game()->mlx);  
     
 }
 

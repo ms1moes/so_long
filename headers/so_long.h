@@ -6,7 +6,7 @@
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:19:17 by msimoes-          #+#    #+#             */
-/*   Updated: 2023/01/03 17:13:14 by msimoes-         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:13:52 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_game
 	void	**img;
 }	t_game;
 
-void load_img();
-void render_img();
+t_map	*map(void);
+t_game	*game(void);
 //map_size
 int	height(char **map);
 int	length(char **map);
@@ -52,7 +52,7 @@ int check_map_chars(t_map *map);
 
 
 char    **map_reader(int fd, char **map, int counter);
-t_map	*map(void);
-t_game	*game(void);
+void render_img();
+
 
 #endif
