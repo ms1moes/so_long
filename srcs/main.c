@@ -6,7 +6,7 @@
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:23:16 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/12/15 16:53:27 by msimoes-         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:35:20 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ t_map   *map(void)
     return(&map);
 }
 
+t_game   *game(void)
+{
+    static t_game    game;
+
+    return(&game);
+}
+
 int	main(int ac, char **av)
 {   
     static t_game  game;
@@ -45,6 +52,7 @@ int	main(int ac, char **av)
     checks();
     close(fd);
     game.mlx = mlx_init();
+    render_img();
     game.win = mlx_new_window(game.mlx, length(map()->map) * 64, height(map()->map) * 64, "so_long");
     mlx_loop(game.mlx);  
     

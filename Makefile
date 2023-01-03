@@ -3,6 +3,7 @@ SRCS		=	$(SRCS_DIR)/get_next_line.c\
 				$(SRCS_DIR)/map_size.c\
 				$(SRCS_DIR)/map_utils.c\
 				$(SRCS_DIR)/checkers.c\
+				$(SRCS_DIR)/render_map.c\
 				$(SRCS_DIR)/main.c\
 
 

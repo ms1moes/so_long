@@ -6,13 +6,13 @@
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:25:31 by msimoes-          #+#    #+#             */
-/*   Updated: 2022/12/15 16:28:15 by msimoes-         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:35:08 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-char	**map_reader(int fd, char **map,  int i)
+char	**map_reader(int fd, char **map, int i)
 {
 	char	*str;
 
