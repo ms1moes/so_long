@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 18:25:31 by msimoes-          #+#    #+#             */
-/*   Updated: 2023/01/11 15:55:00 by msimoes-         ###   ########.fr       */
+/*   Created: 2023/01/11 16:26:26 by msimoes-          #+#    #+#             */
+/*   Updated: 2023/01/11 17:20:21 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-char	**map_reader(int fd, char **map, int i)
+int key_hook(int keycode, void *param)
 {
-	char	*str;
+    t_map *map;
 
-	str = get_next_line(fd);
-	if (str)
-		map = map_reader(fd, map, i + 1);
-	if (!map && i != 0)
-		map = malloc((i + 1) * sizeof(char *));
-	if (!map)
-		return (0);
-	map[i] = str;
-	return (map);
+    map = (t_map *)param;
+    if (keycode == 65307)
+        exit (0);
+    if (keycode == 'w' || keycode == 'a' || keycode == 's' || keycode == 'd')
+        move_player(keycode, map);
+    return (0);
 }

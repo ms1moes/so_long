@@ -6,7 +6,7 @@
 /*   By: msimoes- <msimoes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:19:17 by msimoes-          #+#    #+#             */
-/*   Updated: 2023/01/03 18:13:52 by msimoes-         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:18:17 by msimoes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,24 @@ typedef struct s_game
 	void	**img;
 }	t_game;
 
+//struct calls
 t_map	*map(void);
 t_game	*game(void);
-//map_size
-int	height(char **map);
-int	length(char **map);
 
-//map_checks
-int check_ber(char *str);
-int check_map_closed(int i);
-int check_map_chars(t_map *map);
+//map size
+int		height(char **map);
+int		length(char **map);
 
+//map checks
+int		check_ber(char *str);
+int		check_map_closed(int i);
+int		check_map_chars(t_map *map);
 
-char    **map_reader(int fd, char **map, int counter);
-void render_img();
+char	**map_reader(int fd, char **map, int counter);
+void	render_img(void);
+void	render_img2(void);
+int 	key_hook(int keycode, void *param);
+void    move_player(int keycode, t_map *map);
 
 
 #endif
